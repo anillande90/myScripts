@@ -13,13 +13,13 @@ while (ritm.next()) {
     gs.info(ritm.getDisplayValue('cat_item'));
 }
 
-var ritm = new GlideAggregate('sc_item_produced_record');
-ritm.addEncodedQuery('sys_created_onRELATIVEGT@month@ago@15');
-ritm.groupBy('producer');
-ritm.query();
-while (ritm.next()) {
-    usedItems.push(ritm.getValue('producer'));
-    gs.info(ritm.getDisplayValue('producer'));
+var recGr = new GlideAggregate('sc_item_produced_record');
+recGr.addEncodedQuery('sys_created_onRELATIVEGT@month@ago@15');
+recGr.groupBy('producer');
+recGr.query();
+while (recGr.next()) {
+    usedItems.push(recGr.getValue('producer'));
+    gs.info(recGr.getDisplayValue('producer'));
 }
 gs.info("------Unused Catalog Items --------");
 var unusedCatalogItems = new GlideRecord('sc_cat_item');
